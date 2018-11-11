@@ -16,7 +16,7 @@ def create_santas(filename)
     victim = line.split[0..1].join(' ')
     victim_info = line.split[2..-1].join(' ')
     while names[0] == victim do
-      names.shuffle!
+      names.shuffle! 
     end
     santa = names[0]
 
@@ -27,6 +27,8 @@ def create_santas(filename)
     names.delete(santa)
   end
 end
+
+Dir.mkdir 'santa' unless File.exist? 'santa'
 
 people_file = 'list.txt'
 
@@ -44,4 +46,3 @@ while file_count != names_count do
   create_santas(people_file)
   file_count = Dir.glob(File.join(folder_to_count, '**', '*')).select { |file| File.file?(file) }.count
 end
-
